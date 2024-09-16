@@ -28,12 +28,15 @@ function Login({ open, handleClose, handleRegister }) {
 
   function loggerin() {
     setFormError("");
+  
+    // Ensure all fields in logindata are filled
     for (const key in logindata) {
       if (logindata[key] === "") {
         setFormError("Please fill out all fields.");
         return;
       }
     }
+  
     axios
       .post(`${process.env.REACT_APP_API_URL}/login`, logindata, {
         headers: {
@@ -41,29 +44,27 @@ function Login({ open, handleClose, handleRegister }) {
         },
       })
       .then((response) => {
-        try {
-          const result = response.data;
-          if (result.error) {
-            setFormError(result.error);
-          }
-          else{
-            localStorage.setItem("Ec0MuID", result.uid);
-            localStorage.setItem("Ec0Mt0kEn", result.token);
-            handleClose();
-          }
-          // if (neednavigate === "signup") {
-          //   console.log(result);
-          //   setRedirecttosignup("Account Not Found, Please Signup!");
-          // } else {
-          //   console.log("LogIn successfull");
-          //   navigate(weretoNavigate);
-          // }
-        } catch (error) {
-          console.error("Error parsing JSON:", error);
+        const result = response.data;
+  
+        // Handle server-side errors
+        if (result.error) {
+          setFormError(result.error);
+          return; // Prevent further execution if there's an error
+        }
+  
+        // Save token and UID to localStorage if present
+        if (result.uid && result.token) {
+          localStorage.setItem("Ec0MuID", result.uid);
+          localStorage.setItem("Ec0Mt0kEn", result.token);
+          handleClose();
+        } else {
+          setFormError("Login failed. Please try again.");
         }
       })
       .catch((error) => {
+        // Handle request errors
         console.error("Error making the request:", error);
+        setFormError("An error occurred. Please try again.");
       });
   }
 
@@ -77,7 +78,6 @@ function Login({ open, handleClose, handleRegister }) {
     } else {
       loggerin();
     }
-    // axios.post("http://localhost:3000/signin", { data: logindata });
   }
 
   return (
