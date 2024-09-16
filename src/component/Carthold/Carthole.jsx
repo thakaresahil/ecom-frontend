@@ -19,7 +19,7 @@ function Carthole() {
     const fetchData = async () => {
       try {
         await axios
-          .post("http://localhost:9000/cartdata", details, {
+          .post(`${process.env.REACT_APP_API_URL}/cartdata`, details, {
             headers: { "Content-Type": "application/json" },
           })
           .then((response) => {
@@ -61,7 +61,7 @@ function Carthole() {
       };
       try {
         await axios
-          .patch("http://localhost:9000/buyitem", buydetails, {
+          .patch(`${process.env.REACT_APP_API_URL}/buyitem`, buydetails, {
             headers: { "Content-Type": "application/json" },
           })
           .then((response) => {
@@ -82,7 +82,7 @@ function Carthole() {
 
   const handleRemoveCartItem = async (id) => {
     try {
-      await axios.delete("http://localhost:9000/deleteItem", {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/deleteItem`, {
         data: { id }, // Pass the id in the `data` field
         headers: { "Content-Type": "application/json" },
       })

@@ -28,7 +28,7 @@ function Productbrowse() {
   const fetchProductData = async (gender) => {
     try {
       const response = await axios.get(
-        `http://localhost:9000/browseproducts/${gender}`
+        `${process.env.REACT_APP_API_URL}/browseproducts/${gender}`
       );
       setProductData(response.data);
     } catch (error) {
@@ -69,7 +69,7 @@ function Productbrowse() {
   const addtocart = async (cart) => {
     try {
       await axios.post(
-        `http://localhost:9000/addtocart`,
+        `${process.env.REACT_APP_API_URL}/addtocart`,
         cart,
         { headers: { "Content-Type": "application/json" } }
       ).then((response) => {

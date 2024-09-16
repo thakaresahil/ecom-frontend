@@ -45,9 +45,9 @@ function Register({ open, handleClose, handleLoginComponent}) {
       }
     }
 
-    if (signupdata.password === signupdata.confirm_password) {
+    if (signupdata.passhash === signupdata.confirm_password) {
       axios
-        .post("http://localhost:9000/signup/user", signupdata, {
+        .post(`${process.env.REACT_APP_API_URL}/signup/user`, signupdata, {
           headers: {
             "Content-Type": "application/json",
           },

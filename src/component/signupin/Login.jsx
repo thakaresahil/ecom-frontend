@@ -35,7 +35,7 @@ function Login({ open, handleClose, handleRegister }) {
       }
     }
     axios
-      .post("http://localhost:9000/login", logindata, {
+      .post(`${process.env.REACT_APP_API_URL}/login`, logindata, {
         headers: {
           "Content-Type": "application/json",
         },

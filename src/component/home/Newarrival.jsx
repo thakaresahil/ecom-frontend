@@ -41,7 +41,7 @@ function Newarrival() {
   const addtocart = async (cart) => {
     try {
       await axios.post(
-        `http://localhost:9000/addtocart`,
+        `${process.env.REACT_APP_API_URL}/addtocart`,
         cart,
         { headers: { "Content-Type": "application/json" } }
       ).then((response) => {
@@ -64,7 +64,7 @@ function Newarrival() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:9000/data");
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/data`);
         setNewarrival(response.data);
       } catch (error) {
         console.error("Error fetching data", error);

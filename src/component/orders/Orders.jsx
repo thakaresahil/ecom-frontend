@@ -13,7 +13,7 @@ function Orders() {
     const fetchOrdersData = async () => {
         try {
             const response = await axios.get(
-                `http://localhost:9000/orders/${encodeURIComponent(uidcheck)}`
+                `${process.env.REACT_APP_API_URL}/orders/${encodeURIComponent(uidcheck)}`
             );
             setOrdersData(response.data);
         } catch (error) {

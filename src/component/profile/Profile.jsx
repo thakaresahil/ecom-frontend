@@ -15,7 +15,7 @@ function Profile() {
       const fetchData = async () => {
         try {
             setPdata("");
-            const response = await axios.get(`http://localhost:9000/profile/${encodeURIComponent(uid)}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/profile/${encodeURIComponent(uid)}`);
             setPdata(response.data);
         } catch (error) {
             console.log("Error Fetching Profile", error);
