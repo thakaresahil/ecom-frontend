@@ -4,13 +4,16 @@ import Cart from "./Cart";
 import { NavLink, useNavigate } from "react-router-dom";
 import Login from "../signupin/Login";
 import Register from "../signupin/Register";
+import { useSelector } from "react-redux";
+
 
 function Navbar() {
   const navigate = useNavigate();
+  const logInStatus = useSelector(state => state.logger)
   const [logIn, setLogIn] = useState(false);
   const [register, setRegister] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [loginstatus, setLogInstatus] = useState(false);
+  const [loginstatus, setLogInstatus] = useState(logInStatus);
   const localcheck = localStorage.getItem("Ec0Mt0kEn");
 
   useEffect(() => {

@@ -2,9 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Dialog } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/slices/loginstatus";
 
 function Login({ open, handleClose, handleRegister }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const localcheck = localStorage.getItem("Ec0Mt0kEn");
   useEffect(() => {
     if (localcheck) {
@@ -56,6 +59,7 @@ function Login({ open, handleClose, handleRegister }) {
         if (result.uid && result.token) {
           localStorage.setItem("Ec0MuID", result.uid);
           localStorage.setItem("Ec0Mt0kEn", result.token);
+          dispatch(login());
           handleClose();
         } else {
           setFormError("Login failed. Please try again.");

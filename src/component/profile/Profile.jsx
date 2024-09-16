@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { logout } from '../../redux/slices/loginstatus';
 
 function Profile() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const localcheck = localStorage.getItem('Ec0Mt0kEn');
     const uid = localStorage.getItem('Ec0MuID');
     const [pdata, setPdata] = useState("");
@@ -30,8 +33,8 @@ function Profile() {
     const handleLogOut = () =>{
       localStorage.removeItem("Ec0Mt0kEn");
       localStorage.removeItem("Ec0MuID");
-      window.location.reload();
-      
+      dispatch(logout());
+      navigate('/');
     }
 
   return (
