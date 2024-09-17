@@ -57,6 +57,10 @@ function Bestseller() {
     });
   };
 
+  const handleCloseingViewDetails = () => {
+    setView(null);
+  }
+
   const addtocart = async (cart) => {
     try {
       await axios.post(
@@ -130,7 +134,7 @@ function Bestseller() {
             sellprice={viewData.sellprice}
             description={viewData.description}
             onAddToCart={handleAddToCart}
-
+            onCloseDetails={handleCloseingViewDetails}
           />
         )}
       </div>

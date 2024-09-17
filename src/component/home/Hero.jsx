@@ -6,7 +6,7 @@ function Hero() {
   <img
     src="./images/file.png"
     alt="girl offer letter"
-    className="h-[55vh] lg:order-2 lg:h-[65vh]"
+    className="h-[55vh] lg:order-2 lg:h-[65vh] "
   />
   <div className="flex flex-col justify-around items-start gap-6 lg:order-1 my-10">
     <p>SPRING / SUMMER COLLECTION 2024</p>

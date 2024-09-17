@@ -66,6 +66,10 @@ function Productbrowse() {
     setGender(event.target.value);
   };
 
+  const handleCloseingViewDetails = () => {
+    setView(null);
+  }
+
   const addtocart = async (cart) => {
     try {
       await axios.post(
@@ -108,10 +112,10 @@ function Productbrowse() {
   };
 
   return (
-    <div className="container mx-auto flex justify-around my-12">
-      {view === null ? (
-        <div className="flex flex-col justify-start items-start w-96 my-20 gap-4">
-          <h2 className="text-3xl">Product Category</h2>
+    <div className="container mx-auto flex md:flex-row flex-col justify-around my-12">
+    {view === null ? (
+      <div className="flex md:flex-col flex-row md:justify-start justify-center w-full md:items-start items-center md:w-96 md:my-20 mx-6 flex-wrap gap-4">
+        <h2 className="text-3xl ">Product Category</h2>
           <button onClick={handleGenderChange} value="men">
             Men
           </button>
@@ -173,6 +177,7 @@ function Productbrowse() {
                 description={viewData.description}
                 discPercents={viewData.discPercents}
                 onAddToCart={handleAddToCart}
+                onCloseDetails={handleCloseingViewDetails}
               />
             )}
           </div>

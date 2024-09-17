@@ -10,6 +10,7 @@ function Detailedview({
   description,
   discPercents,
   onAddToCart,
+  onCloseDetails,
 }) {
   const [count, setCount] = useState(1);
   // console.log(description);
@@ -22,7 +23,11 @@ function Detailedview({
   };
 
   const handleAddToCartClick = () => {
-    onAddToCart(id,count);
+    onAddToCart(id, count);
+  };
+
+  const handleCloseDetails = () => {
+    onCloseDetails();
   };
 
   return (
@@ -31,7 +36,11 @@ function Detailedview({
         <img src={img} alt={name} />
       </div>
       <div className="w-3/4 flex flex-col gap-2">
+      <div className=" flex justify-between items-start">
+
         <h1 className="text-3xl">{name}</h1>
+        <button onClick={handleCloseDetails} className="text-blue-600 text-2xl">🔙</button>
+      </div>
 
         <p>{description}</p>
         <div className="flex w-full justify-center items-center bg-gray-100 p-2 rounded-lg">

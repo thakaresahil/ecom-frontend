@@ -38,6 +38,10 @@ function Newarrival() {
     addtocart(newCartItem);
   };
 
+  const handleCloseingViewDetails = () => {
+    setView(null);
+  }
+
   const addtocart = async (cart) => {
     try {
       await axios.post(
@@ -130,6 +134,7 @@ function Newarrival() {
             sellprice={viewData.sellprice}
             description={viewData.description}
             onAddToCart={handleAddToCart}
+            onCloseDetails={handleCloseingViewDetails}
           />
         )}
       </div>
