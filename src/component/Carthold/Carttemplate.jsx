@@ -21,7 +21,7 @@ function Carttemplate({
   };
 
   return (
-    <div className="flex gap-6 justify-start items-start m-2">
+    <div className="flex flex-col md:flex-row gap-6 justify-start items-start m-2">
       <img src={img} alt="productimg" className="h-72 " />
       <div className="flex flex-col items-start">
         <div className="flex justify-between w-full items-center">

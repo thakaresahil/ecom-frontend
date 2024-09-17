@@ -6,10 +6,9 @@ import Login from "../signupin/Login";
 import Register from "../signupin/Register";
 import { useSelector } from "react-redux";
 
-
 function Navbar() {
   const navigate = useNavigate();
-  const logInStatus = useSelector(state => state.logger)
+  const logInStatus = useSelector((state) => state.logger);
   const [logIn, setLogIn] = useState(false);
   const [register, setRegister] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -27,25 +26,30 @@ function Navbar() {
   const handleLoginComponent = () => {
     setRegister(false);
     setLogIn(true);
+    setIsOpen(false);
   };
   const handleClose = () => {
     setLogIn(false);
     setRegister(false);
+    setIsOpen(false);
   };
 
   const handleProfile = () => {
     navigate("/profile");
-  }
+  };
 
   const handleregister = () => {
     setLogIn(false);
     setRegister(true);
+    setIsOpen(false);
   };
 
   return (
     <div className="static">
       <div className="container mx-auto flex justify-between items-center gap-6 m-4">
-        <NavLink to="/" className="text-xl font-bold">PosCon</NavLink>
+        <NavLink to="/" className="text-xl font-bold">
+          PosCon
+        </NavLink>
         <div className="hidden md:flex justify-around items-center gap-6">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/browseproduct">Explore</NavLink>
@@ -82,9 +86,11 @@ function Navbar() {
               </button>
             </form>
             {/* cart */}
-            <NavLink to="/cart" className="hidden md:block">
-              <Cart />
-            </NavLink>
+            {loginstatus ? (
+              <NavLink to="/cart">
+                <Cart />
+              </NavLink>
+            ) : null}
             {/* profile hidden on small screens */}
             {loginstatus ? (
               <button className="hidden md:block" onClick={handleProfile}>
@@ -123,9 +129,11 @@ function Navbar() {
                 {/* Optional: Add your Cart component here */}
 
                 <ul className="py-1">
-                  <NavLink to="/cart">
-                    <Cart />
-                  </NavLink>
+                  {loginstatus ? (
+                    <NavLink to="/cart">
+                      <Cart />
+                    </NavLink>
+                  ) : null}
                   <li>
                     <NavLink
                       to="/"
@@ -136,20 +144,13 @@ function Navbar() {
                   </li>
                   <li>
                     <NavLink
-                      to="/contact"
+                      to="/browseproduct"
                       className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100"
                     >
-                      Contact
+                      Explore
                     </NavLink>
                   </li>
-                  <li>
-                    <NavLink
-                      to="/about"
-                      className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100"
-                    >
-                      About
-                    </NavLink>
-                  </li>
+
                   {!loginstatus ? (
                     <li>
                       <button
@@ -164,7 +165,7 @@ function Navbar() {
                     <li>
                       <button
                         className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100"
-                      onClick={handleProfile}
+                        onClick={handleProfile}
                       >
                         Profile
                       </button>
