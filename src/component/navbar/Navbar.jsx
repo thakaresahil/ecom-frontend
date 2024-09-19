@@ -47,28 +47,46 @@ function Navbar() {
   return (
     <div className="static">
       <div className="container mx-auto flex justify-between items-center gap-6 m-4">
-        <NavLink to="/" className="text-xl font-bold">
+        <NavLink
+          to="/"
+          className="text-xl font-bold transition transform hover:scale-105 duration-300"
+        >
           PosCon
         </NavLink>
         <div className="hidden md:flex justify-around items-center gap-6">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/browseproduct">Explore</NavLink>
+          <NavLink
+            to="/"
+            className="transition transform hover:scale-105 hover:text-blue-600 duration-300"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/browseproduct"
+            className="transition transform hover:scale-105 hover:text-blue-600 duration-300"
+          >
+            Explore
+          </NavLink>
           {!loginstatus ? (
-            <button onClick={handleLoginComponent}>Log In</button>
+            <button
+              onClick={handleLoginComponent}
+              className="transition transform hover:scale-105 hover:text-blue-600 duration-300"
+            >
+              Log In
+            </button>
           ) : null}
         </div>
         <div className="flex justify-end items-center gap-2">
           <div className="flex justify-around items-center gap-4">
             <form
               onSubmit={handleformsearch}
-              className="flex items-center p-1 bg-slate-200 rounded"
+              className="hidden lg:flex items-center p-1 bg-slate-200 rounded"
             >
               <input
                 type="text"
                 placeholder="Search"
                 className="flex-1 p-1 bg-transparent border-none focus:outline-none placeholder-slate-400"
               />
-              <button className="p-1">
+              <button className="p-1 transition transform hover:scale-105 duration-300">
                 <svg
                   fill="none"
                   stroke="currentColor"
@@ -87,13 +105,19 @@ function Navbar() {
             </form>
             {/* cart */}
             {loginstatus ? (
-              <NavLink to="/cart">
+              <NavLink
+                to="/cart"
+                className="hidden lg:block transition transform hover:scale-105 duration-300"
+              >
                 <Cart />
               </NavLink>
             ) : null}
             {/* profile hidden on small screens */}
             {loginstatus ? (
-              <button className="hidden md:block" onClick={handleProfile}>
+              <button
+                className="hidden lg:block transition transform hover:scale-105 duration-300"
+                onClick={handleProfile}
+              >
                 <Profile />
               </button>
             ) : null}
@@ -102,7 +126,7 @@ function Navbar() {
             <button
               data-collapse-toggle="navbar-hamburger"
               type="button"
-              className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+              className="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 transition transform hover:scale-105 duration-300"
               aria-controls="navbar-hamburger"
               aria-expanded={isOpen}
               onClick={() => setIsOpen(!isOpen)}
@@ -130,14 +154,14 @@ function Navbar() {
 
                 <ul className="py-1">
                   {loginstatus ? (
-                    <NavLink to="/cart">
+                    <NavLink to="/cart" className="transition transform hover:scale-105 duration-300">
                       <Cart />
                     </NavLink>
                   ) : null}
                   <li>
                     <NavLink
                       to="/"
-                      className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100"
+                      className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 transition transform hover:scale-105 duration-300"
                     >
                       Home
                     </NavLink>
@@ -145,7 +169,7 @@ function Navbar() {
                   <li>
                     <NavLink
                       to="/browseproduct"
-                      className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100"
+                      className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 transition transform hover:scale-105 duration-300"
                     >
                       Explore
                     </NavLink>
@@ -155,7 +179,7 @@ function Navbar() {
                     <li>
                       <button
                         onClick={handleLoginComponent}
-                        className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100"
+                        className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 transition transform hover:scale-105 duration-300"
                       >
                         Log in
                       </button>
@@ -164,7 +188,7 @@ function Navbar() {
                   {loginstatus ? (
                     <li>
                       <button
-                        className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100"
+                        className="block py-2 px-4 text-gray-900 rounded hover:bg-gray-100 transition transform hover:scale-105 duration-300"
                         onClick={handleProfile}
                       >
                         Profile

@@ -26,7 +26,7 @@ function Carttemplate({
       <div className="flex flex-col items-start">
         <div className="flex justify-between w-full items-center">
           <p className="font-semibold text-xl ">{namee}</p>
-          <button onClick={handleRemoveItem} className="text-3xl">
+          <button onClick={handleRemoveItem} className="text-3xl transition transform hover:scale-105 duration-300">
             <MdDeleteForever />
           </button>
         </div>

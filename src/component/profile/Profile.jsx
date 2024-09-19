@@ -47,7 +47,7 @@ function Profile() {
             <p>Phone number: {pdata.pnum}</p> 
             <p>Email: {pdata.email}</p>
             <p>Address: {pdata.address}</p> 
-            <button className="px-4 py-2 bg-slate-800 text-white rounded-md" onClick={handleLogOut}>
+            <button className="px-4 py-2 bg-slate-800 text-white rounded-md transition transform hover:scale-105 duration-300" onClick={handleLogOut}>
               LogOut
             </button>
     </div>

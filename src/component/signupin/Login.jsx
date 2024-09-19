@@ -130,7 +130,7 @@ function Login({ open, handleClose, handleRegister }) {
           <button
             onClick={handlesubmit}
             type="submit"
-            className="w-full text-center py-3 rounded  bg-red-500 text-white hover:bg-red-600 focus:outline-none my-1 hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+            className="w-full text-center py-3 rounded  bg-red-500 text-white hover:bg-red-600 focus:outline-none my-1 hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 hover:scale-105 duration-300"
           >
             Log In
           </button>

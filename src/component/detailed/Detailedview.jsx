@@ -58,18 +58,18 @@ function Detailedview({
         </div>
         <div className="flex justify-between items-center">
           <p>Quantity</p>
-          <div className="flex justify-center items-center border">
+          <div className="flex justify-center items-center border transition transform hover:scale-105 duration-300">
             <button onClick={decrement} className="m-0 p-2 px-4">
               -
             </button>
             <h1 className="p-2 px-4 m-0">{count}</h1>
-            <button onClick={increment} className="m-0 p-2 px-4">
+            <button onClick={increment} className="m-0 p-2 px-4 transition transform hover:scale-105 duration-300">
               +
             </button>
           </div>
           <button
             onClick={handleAddToCartClick}
-            className="bg-red-500 p-2 px-4 rounded-md text-white"
+            className="bg-red-500 p-2 px-4 rounded-md text-white hover:bg-red-100 transition transform hover:scale-105 duration-300"
           >
             ADD TO CART
           </button>
